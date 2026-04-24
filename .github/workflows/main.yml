@@ -2,20 +2,24 @@ name: Java CI
 
 on:
   push:
-  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Setup Java
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin'
-        java-version: '17'
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-    - name: Find and compile Java files
-      run: find . -name "*.java" -exec javac {} +
+      - name: Compile Java files
+        run: |
+          find . -name "*.java" > sources.txt
+          javac @sources.txt
+
+      - name: Run tests
+        run: java inventarioTest
