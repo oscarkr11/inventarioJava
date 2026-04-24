@@ -17,7 +17,7 @@ jobs:
           java-version: '17'
 
       - name: Compile Java files
-        run: javac src/*.java
+        run: javac *.java
 
-      - name: Run program
-        run: java -cp src InventarioTest
+      - name: Run test class
+        run: java InventarioTest
