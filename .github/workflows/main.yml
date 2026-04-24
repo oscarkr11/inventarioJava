@@ -13,10 +13,11 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
+          distribution: 'temurin'
           java-version: '17'
 
-      - name: Compile project
+      - name: Compile Java files
         run: javac *.java
 
-      - name: Run tests
-        run: mvn test
+      - name: Run program
+        run: java InventarioTest
