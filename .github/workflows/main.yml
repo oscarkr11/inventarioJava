@@ -16,10 +16,8 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Compile Java files
-        run: |
-          find . -name "*.java" > sources.txt
-          javac @sources.txt
+      - name: Compile project
+        run: find . -name "*.java" > sources.txt && javac @sources.txt
 
-      - name: Run tests
+      - name: Run main class
         run: java inventarioTest
